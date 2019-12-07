@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="single-item">
+        <h1>Show event</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ event.name }}</td>
+                </tr>
+                <tr>
+                    <th>Datetime</th>
+                    <td>{% if event.dateTime %}{{ event.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ event.description }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>{{ event.image }}</td>
+                </tr>
+                <tr>
+                    <th>Capacity</th>
+                    <td>{{ event.capacity }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ event.email }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ event.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ event.address }}</td>
+                </tr>
+                <tr>
+                    <th>Postalcode</th>
+                    <td>{{ event.postalCode }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ event.city }}</td>
+                </tr>
+                <tr>
+                    <th>Website</th>
+                    <td>{{ event.website }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ event.type }}</td>
+                </tr>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ event.id }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a class="btn btn-outline-success btn-lg my-2" href="{{ path('events_edit', { 'id': event.id }) }}">Edit</a>
+
+        {{ form_start(delete_form) }}
+            <input class="btn btn-outline-danger btn-lg my-2" role="button" type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+
+        <a class="btn btn-outline-secondary btn-lg my-2" href="{{ path('events_index') }}">Back to the list</a>
+    </div>
+{% endblock %}

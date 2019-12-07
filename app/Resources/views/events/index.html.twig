@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-warning btn-lg float-right my-2" role="button" href="{{ path('events_new') }}">Create a new event</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Datetime</th>
+                <th>Description</th>
+                <th>Capacity</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Postalcode</th>
+                <th>City</th>
+                <th>Website</th>
+                <th>Type</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td><img src="{{ event.image }}" height="100px"></td>
+                <td><a href="{{ path('events_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
+                <td>{% if event.dateTime %}{{ event.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.capacity }}</td>
+                <td>{{ event.email }}</td>
+                <td>{{ event.phone }}</td>
+                <td>{{ event.address }}</td>
+                <td>{{ event.postalCode }}</td>
+                <td>{{ event.city }}</td>
+                <td>{{ event.website }}</td>
+                <td>{{ event.type }}</td>
+                <td>{{ event.id }}</td>
+                <td>
+                    <a class="btn btn-outline-primary btn-lg m-1" role="button" href="{{ path('events_show', { 'id': event.id }) }}">show</a>
+                    <a class="btn btn-outline-success btn-lg m-1" role="button" href="{{ path('events_edit', { 'id': event.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
